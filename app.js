@@ -1,19 +1,19 @@
-const url = "https://icanhazdadjoke.com";
-const line = document.querySelector(".line")
+const joke = document.querySelector(".joke")
 const btn = document.querySelector(".btn")
-const newJoke=async()=>{
-	try {
-		const setHeader={
-			headers:{
-				accept: "application/json"
-			}
-		}
-		const res = await fetch(url,setHeader)
-		const data = await res.json()
-		line.innerHTML = data.joke
-	} catch (error) {
-		console.log(`the error is ${error}`);
-	}
+const URL = "https://icanhazdadjoke.com/"
+const getJokes = async ()=>{
+    try {
+        setHeader={
+            headers:{
+                accept:"application/json"
+            }
+        }
+        const response = await fetch(URL,setHeader)
+        const data = await response.json()
+        joke.innerHTML=data.joke
+    } catch (error) {
+        console.log(error);
+    }
 }
-btn.addEventListener('click',newJoke)
-newJoke()
+btn.addEventListener("click",getJokes)
+getJokes()
